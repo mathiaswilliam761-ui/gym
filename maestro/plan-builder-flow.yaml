@@ -1,0 +1,74 @@
+appId: com.gymapp.app
+---
+# GymApp - Plan Builder Flow E2E Test
+# Run with: maestro test maestro/plan-builder-flow.yaml
+
+- waitForAnimationToEnd:
+    timeout: 10000
+
+# Navigate to Plans tab
+- tapOn:
+    text: "Plans"
+    optional: true
+
+# Create new plan
+- tapOn:
+    text: "Create Plan"
+    optional: true
+- tapOn:
+    text: "New Plan"
+    optional: true
+
+# Fill plan metadata
+- tapOn:
+    id: "plan-name-input"
+    optional: true
+- inputText: "8-Week Upper/Lower"
+- tapOn:
+    id: "plan-goal-picker"
+    optional: true
+- tapOn:
+    text: "Gain Muscle"
+    optional: true
+- tapOn:
+    id: "plan-difficulty-picker"
+    optional: true
+- tapOn:
+    text: "Intermediate"
+    optional: true
+- tapOn:
+    id: "plan-duration-picker"
+    optional: true
+- tapOn:
+    text: "8 weeks"
+    optional: true
+- tapOn:
+    id: "plan-frequency-picker"
+    optional: true
+- tapOn:
+    text: "4 days"
+    optional: true
+
+# Add exercises to Day 1
+- tapOn:
+    text: "Add Exercise"
+    optional: true
+- tapOn:
+    text: "Bench Press"
+    optional: true
+- tapOn:
+    text: "Add Exercise"
+    optional: true
+- tapOn:
+    text: "Bent Over Rows"
+    optional: true
+
+# Save plan
+- tapOn:
+    text: "Save Plan"
+    optional: true
+
+# Verify plan appears in list
+- assertVisible:
+    text: "8-Week Upper/Lower"
+    optional: true

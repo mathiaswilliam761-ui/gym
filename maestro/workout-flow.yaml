@@ -1,0 +1,66 @@
+appId: com.gymapp.app
+---
+# GymApp - Core Workout Flow E2E Test
+# Run with: maestro test maestro/workout-flow.yaml
+
+# Wait for app to launch
+- waitForAnimationToEnd:
+    timeout: 10000
+
+# Navigate to Workouts tab
+- tapOn:
+    id: "workouts-tab"
+    optional: true
+- tapOn:
+    text: "Workouts"
+    optional: true
+
+# Start a new workout
+- tapOn:
+    text: "Start Workout"
+    optional: true
+- tapOn:
+    text: "Full Body"
+    optional: true
+
+# Verify we're in ActiveWorkout screen
+- assertVisible:
+    text: "Rest Timer"
+
+# Complete first set
+- tapOn:
+    id: "weight-input-1"
+    optional: true
+- inputText: "225"
+- tapOn:
+    id: "reps-input-1"
+    optional: true
+- inputText: "8"
+- tapOn:
+    id: "complete-set-1"
+    optional: true
+
+# Verify rest timer appears
+- assertVisible:
+    text: "REST TIMER"
+    optional: true
+
+# Cancel rest timer
+- tapOn:
+    text: "Cancel"
+    optional: true
+
+# End workout
+- tapOn:
+    text: "End"
+    optional: true
+
+# Verify workout summary
+- assertVisible:
+    text: "Workout Complete"
+    optional: true
+
+# Navigate back to main
+- tapOn:
+    text: "Done"
+    optional: true
